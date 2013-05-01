@@ -1,0 +1,31 @@
+number = 100
+
+HighestNumToDivideFrom = SQRT of number(10)
+
+
+
+if ( HighestNumToDivideFrom % 2 == 0)
+HighestNumToDivideFrom --
+
+100 / 9 = 11.111111
+
+9 is not a factor of 100
+
+HighestNumToDivideFrom -2 = 7
+
+100/7=14.2
+
+7 not a factor of 100
+
+HighestNumToDivideFrom - 2 = 5
+
+100/5
+100/5 =20
+
+5 is a factor
+
+isPrime 5 = true
+
+break
+
+Console.Writeline(Answer: HighestNumToDivideFrom)
