@@ -30,6 +30,8 @@ namespace _4_LargestPalindrome
             int num1;
             int num2;
             int num3;
+            int LgNum1 = 0;
+            int LgNum2 = 0;
             int digits = int.Parse(digitsStr);
             double lowest;
             int largestPalindrome = 0;
@@ -49,7 +51,6 @@ namespace _4_LargestPalindrome
                 num3Enum = num3Str.GetEnumerator();
                 num3StrRev = String.Empty;
 
-                
                 while (num3Enum.MoveNext())
                 {
                    num3StrRev = num3Enum.Current.ToString() + num3StrRev;
@@ -57,13 +58,11 @@ namespace _4_LargestPalindrome
 
                 if (num3Str == num3StrRev)
                 {
-                    //Console.WriteLine(num1 + "x" + num2 + "=" + num3);
                     if (num3 > largestPalindrome)
                     {
-                        //Console.WriteLine("I found a larger palindrome.");
-                        
-                        //Console.WriteLine(num1 + "x" + num2 + "=" + num3);
-                        largestPalindrome = num3;  
+                        largestPalindrome = num3;
+                        LgNum1 = num1;
+                        LgNum2 = num2;
                     }
                 }
 
@@ -75,7 +74,7 @@ namespace _4_LargestPalindrome
                     num2 = num1;
                 }  
             }
-            Console.WriteLine(num1 + "x" + num2 + "=" + num3);
+            Console.WriteLine(LgNum1 + "x" + LgNum2 + "=" + largestPalindrome);
             Console.WriteLine("Answer: " + largestPalindrome); //906609
         }
     }
