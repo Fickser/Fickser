@@ -24,76 +24,59 @@ namespace _4_LargestPalindrome
              * step6: 
             */
 
-            string digitsStr = args[0];
 
+//============================================BEGIN VARIABLE DECLARATION==============================================
+            string digitsStr = args[0];
             int num1;
             int num2;
             int num3;
             int digits = int.Parse(digitsStr);
             double lowest;
             int largestPalindrome = 0;
-
             string num3Str;
             string num3StrRev;
             CharEnumerator num3Enum;
+//===========================================END VARIABLE DECLARATION=================================================
 
             lowest = Math.Pow(10, digits - 1);
-
             num1 = (int)Math.Pow(10, digits) - 1;
             num2 = num1;
 
             while (num1 >= lowest)
             {
                 num3 = num1 * num2;
-                //Console.WriteLine(num1 + "x" + num2 + "=" + num3);
-
                 num3Str = num3.ToString();
                 num3Enum = num3Str.GetEnumerator();
-
                 num3StrRev = String.Empty;
+
+                
                 while (num3Enum.MoveNext())
                 {
                    num3StrRev = num3Enum.Current.ToString() + num3StrRev;
                 }
-                
-
-               // Console.WriteLine("Comparing " + num3Str + " to " + num3StrRev);
 
                 if (num3Str == num3StrRev)
                 {
-                    
-                    
+                    //Console.WriteLine(num1 + "x" + num2 + "=" + num3);
                     if (num3 > largestPalindrome)
                     {
-                        Console.WriteLine("I found a larger palindrome.");
-                        Console.WriteLine(num1 + "x" + num2 + "=" + num3);
-                        largestPalindrome = num3;
+                        //Console.WriteLine("I found a larger palindrome.");
                         
+                        //Console.WriteLine(num1 + "x" + num2 + "=" + num3);
+                        largestPalindrome = num3;  
                     }
                 }
 
                 num2--;
 
-                if (num2 < lowest)
+                if (num2 < lowest || num3Str == num3StrRev)
                 {
                     num1--;
                     num2 = num1;
-                }
-                
+                }  
             }
-
-
-            /*
-             * 99*99 = 9801
-             * 99*98 = 9702
-             * 99*97 = 9603
-             * 99*96 = 9504
-             * 99*95 = 9405
-             * 99*94 = 9306
-             * 99*93 = 9207
-             * 
-             * */
-            Console.WriteLine("Answer: " + largestPalindrome);
+            Console.WriteLine(num1 + "x" + num2 + "=" + num3);
+            Console.WriteLine("Answer: " + largestPalindrome); //906609
         }
     }
 }
