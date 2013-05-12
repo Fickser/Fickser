@@ -35,7 +35,8 @@ namespace _8_Largest_Product_In_A_Series
 
             string[] TDN_Array = new string[ThousandDigitNumber.Length];
              CharEnumerator EnumThousandDigitNumber;
-             int count = 0; 
+             int count = 0;
+            int count2 = 0;
 
              int slot1 = 0;
              int slot2 = 1;
@@ -65,26 +66,30 @@ namespace _8_Largest_Product_In_A_Series
 
              for (int i = 0; i < ThousandDigitNumber.Length - 5; i++)
              {
-
-
                  product1 = Convert.ToInt32(TDN_Array[slot1]);
                  product2 = Convert.ToInt32(TDN_Array[slot2]);
                  product3 = Convert.ToInt32(TDN_Array[slot3]);
                  product4 = Convert.ToInt32(TDN_Array[slot4]);
                  product5 = Convert.ToInt32(TDN_Array[slot5]);
 
-                 Console.WriteLine("Slot1: " + product1);
-                 Console.WriteLine("Slot2: " + product2);
-                 Console.WriteLine("Slot3: " + product3);
-                 Console.WriteLine("Slot4: " + product4);
-                 Console.WriteLine("Slot5: " + product5);
-                 total = product1 * product2 * product3 * product4 * product5;
-                 Console.WriteLine("Product of slots 1-5: " + total);
-                 if (total > greatestProduct)
-                 {
-                     greatestProduct = total;
-                 }
+                 
 
+                 if (product1 != 0 && product2 != 0 && product3 != 0 && product4 != 0 && product5 != 0)
+                 {
+                     Console.WriteLine("Slot1: " + product1);
+                     Console.WriteLine("Slot2: " + product2);
+                     Console.WriteLine("Slot3: " + product3);
+                     Console.WriteLine("Slot4: " + product4);
+                     Console.WriteLine("Slot5: " + product5);
+
+                     total = product1 * product2 * product3 * product4 * product5;
+                     Console.WriteLine("Product of slots 1-5: " + total);
+                     count2++;
+                     if (total > greatestProduct)
+                     {
+                         greatestProduct = total;
+                     }
+                 }
                  slot1++;
                  slot2++;
                  slot3++;
@@ -92,6 +97,7 @@ namespace _8_Largest_Product_In_A_Series
                  slot5++;
              }
              Console.WriteLine("The Greatest Product of 5 consecutive digits is: " + greatestProduct);
+             Console.WriteLine("Total amount of iterations: " + count2);
         }
     }
 }
