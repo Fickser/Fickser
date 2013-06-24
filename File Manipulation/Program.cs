@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 
 namespace ConsoleApplication1
 {
@@ -17,90 +16,38 @@ namespace ConsoleApplication1
 
             Console.WriteLine("We are currently working in the " + path + " directory. \n");
             Console.WriteLine("What would you like to do? \n \n");
-            Console.WriteLine("1: Get SubFolders \n2: Get Files \n3: Create .txt file");
+            Console.WriteLine("1: Get SubFolders \n2: Get Files \n3: Create new .txt file \n4: Append existing file \n5: Delete existing file");
+            Console.Write("\nInput: ");
+
             string answer = Console.ReadLine();
+            Console.WriteLine();
 
             switch (answer)
             {
                 case "1":
-                    GetFolders(path);
+                    Retrieval.GetFolders(path);
                     break;
                 case "2":
-                    GetFiles(path);
+                    Retrieval.GetFiles(path);
                     break;
                 case "3":
-                    CreateTxtDoc(path);
+                    Manipulation.CreateTxtDoc(path);
+                    break;
+                case "4":
+                    Manipulation.Append(path);
+                    break;
+                case "5":
+                    Manipulation.deleteFile(path);
                     break;
                 default:
-                    Console.WriteLine("Invalid response. Please Try again.");
+                    invalid();
                     MainMenu();
                     break;
             }
-
-
-            /*CreateTxtDoc(path); //creates custom txt file and adds to directory
-            GetFolders(path); //Grabs directories from target and displays
-            GetFiles(path); // Grabs files from target and displays
-            GetExtension(path); //Grabs Extension from target and displays*/
-
-
-
-        }
-
-        static void GetFolders(string path)
-        {
-            string[] directoryPath = Directory.GetDirectories(path);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Current Subdirectories within target folder: \n");
-            Console.ForegroundColor = ConsoleColor.Green;
-            for (int i = 0; i < directoryPath.Length; i++)
-            {
-                Console.WriteLine(directoryPath[i]);
-            }
-            Console.WriteLine();
             DoMore();
         }
 
-        static void GetFiles(string path)
-        {
-            string[] filePath = Directory.GetFiles(path);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Current files within target folder: \n");
-            Console.ForegroundColor = ConsoleColor.Blue;
-
-            for (int i = 0; i < filePath.Length; i++)
-            {
-                Console.WriteLine(filePath[i]);
-            }
-            Console.WriteLine();
-            DoMore();
-        }
-
-        static void GetExtension(string path)
-        {
-            string[] filePath = Directory.GetFiles(path);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("The extension for " + filePath[0] + " is " + "\"" + Path.GetExtension(filePath[0]) + "\"");
-        }
-
-        static void CreateTxtDoc(string path)
-        {
-            Console.Write("What would you like the file to be named?: ");
-            string result = Console.ReadLine();
-            if (File.Exists(path + "\\" + result + ".txt"))
-            {
-                Console.WriteLine("\n File Exists. Skipping File Creation. \n");
-            }
-            else
-            {
-                Console.WriteLine("\n File does not exist. Creating File. \n");
-                File.Create(path + "\\" + result + ".txt");
-            }
-            Console.WriteLine();
-            DoMore();
-        }
-
-        static void DoMore()
+        public static void DoMore()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Would you like to do more?");
@@ -117,10 +64,18 @@ namespace ConsoleApplication1
                     Console.WriteLine("Thank you for using the Directory Editor. Have a nice day.");
                     break;
                 default:
-                    Console.WriteLine("Invalid response. Try again");
+                    invalid();
                     DoMore();
                     break;
             }
+        }
+
+        public static void invalid()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("**Invalid response. Try again.** \n");
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
