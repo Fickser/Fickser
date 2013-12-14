@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicMatchingSearch.cs" />
     <Compile Include="FizzBuzz.cs" />
+    <Compile Include="IBasicMatchingSearch.cs" />
     <Compile Include="IFizzBuzz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
