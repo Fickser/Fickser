@@ -14,17 +14,20 @@ namespace DasFrameWurks
 
           foreach(int i in Values)
           {
-              if (i%3 == 0 && i%5 !=0)
-              {
-                  string whatever = i.ToString() + "Fizz";
+              int mod3 = i % 3;
+              int mod5 = i % 5;
+
+              if (mod3 == 0 && mod5 !=0)                                
+              {                                                         
+                  string whatever = i.ToString() + "Fizz";              
                   ReturnSequence.Add(whatever);
               } 
-              else if(i%5 == 0 && i%3 !=0)
+              else if(mod5 == 0 && mod3 !=0)
               {
                   string whatever = i.ToString() + "Buzz";
                   ReturnSequence.Add(whatever);
               }
-              else if(i%5 == 0 && i%3 == 0)
+              else if(mod5 == 0 && mod3 == 0)
               {
                   string whatever = i.ToString() + "FizzBuzz";
                   ReturnSequence.Add(whatever);
