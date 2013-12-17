@@ -26,7 +26,28 @@
         /// </exception>
         public bool Contains(List<string> haystack, string needle)
         {
-            throw new NotImplementedException();
+
+            if (haystack == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (needle == null)
+            {
+                 throw new ArgumentNullException();
+            }
+
+
+            foreach(string i in haystack)
+            {
+                if (i.Equals(needle))
+                {
+                    return true;
+                }
+            }
+            return false;
+            
+            
         }
 
         #endregion
