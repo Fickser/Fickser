@@ -37,7 +37,6 @@
                  throw new ArgumentNullException();
             }
 
-
             foreach(string i in haystack)
             {
                 if (i.Equals(needle))
@@ -46,8 +45,6 @@
                 }
             }
             return false;
-            
-            
         }
 
         #endregion
